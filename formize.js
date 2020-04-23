@@ -113,6 +113,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }
         });
+
+        el.querySelectorAll('textarea').forEach(field => {
+          if (!field.hasAttribute('disabled') && (field.hasAttribute('id') || field.hasAttribute('name'))) {
+            let id, value = null;
+            id = field.getAttribute('id') ? field.getAttribute('id') : field.getAttribute('name');
+            value = field.value
+  
+            arrData.push({ id, value });
+          }
+        });
   
         arrData.forEach(d => {
           data[d.id] = d.value;
