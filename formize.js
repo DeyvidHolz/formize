@@ -34,10 +34,6 @@ function formizeRequest(request) {
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('[formize]').forEach(el => {
 
-    el.onclick = e => {
-      e.preventDefault();
-    }
-
     // Setar tudo aqui caso for null
     if (!el.getAttribute('formize')) el.setAttribute('formize', '');
     if (!el.getAttribute('form-method')) el.setAttribute('form-method', 'POST');
@@ -69,7 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let arrData = [];
 
     if (el.querySelector('[formize-submit]')) {
-      el.querySelector('[formize-submit]').addEventListener('click', function() {
+      el.querySelector('[formize-submit]').addEventListener('click', function(e) {
+
+        e.preventDefault();
   
         // Some elements don't have a "value" property, here you can change the property who saves the element's value.
         // Ex: checkbox = .checked
